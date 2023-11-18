@@ -14,3 +14,11 @@ project:
       name: 'Connor'
       surname: 'Von Winckelmann' 
       githubUsername: 'FervidAcademic'
+    member3:
+      name: 'Patrick'
+      surname: 'Cui' 
+      githubUsername: 'Cuiboy'
+    member4:
+      name: 'Mohammed'
+      surname: 'Alobaidi' 
+      githubUsername: 'moAlobaidi'
