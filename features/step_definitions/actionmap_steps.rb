@@ -19,3 +19,7 @@ Given /the following counties exist/ do |counties_table|
       :created_at => Time.now(), :updated_at => Time.now())
   end
 end
+
+Then /I navigate to the county map of (.*)/ do |county|
+  page.find(:xpath, ".//td[text()='#{county}']/../td/a[text()='View']").click
+end
