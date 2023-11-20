@@ -11,6 +11,12 @@ Background: the database has some states
   | California  | CA     | 6         | false        |
   | Hawaii      | HI     | 15        | false        |
 
+  And Given the following counties exist:
+  | name           | state_id | fips_code | fips_class |
+  | Marin county   | 1        | 6041      | idk        |
+  | Alameda county | 1        | 6001      | idk        |
+  | Hawaii county  | 2        | 15001     | idk        |
+
 Scenario: I look for a non-existent state
   When I am on the state map of Florida
   Then I should see "not found"
@@ -18,7 +24,13 @@ Scenario: I look for a non-existent state
 Scenario: I search for California
   When I am on the state map of CA
   Then I should see "California"
+  Then I should see "Marin county"
+  Then I should see "Alameda county"
+  Then I should not see "Hawaii"
 
 Scenario: I search for Hawaii
   When I am on the state map of HI
   Then I should see "Hawaii"
+  Then I should see "Hawaii county"
+  Then I should not see "Marin county"
+  Then I should not see "not found"
