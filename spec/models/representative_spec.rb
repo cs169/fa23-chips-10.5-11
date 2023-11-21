@@ -8,7 +8,7 @@ require 'spec_helper'
 class MockOfficial
   attr_accessor :name, :address
 
-  def initialize(official_name, official_address = nil)
+  def initialize(official_name, official_address=nil)
     @name = official_name
     @address = official_address
   end
@@ -33,9 +33,20 @@ class MockInfo
   end
 end
 
+class MockAddress
+  attr_accessor :line1, :city, :state, :zip
+
+  def initialize(line1, city, state, zip)
+    @line1 = line1
+    @city = city
+    @state = state
+    @zip = zip
+  end
+end
+
 describe Representative do
   before do
-    @a_rep = MockOfficial.new('Tim Ryan')
+    @a_rep = MockOfficial.new('Tim Ryan', MockAddress.new('123 Main St', 'Anytown', 'CA', '12345'))
     @mock_office = MockOffice.new('U.S. Representative', 'US_REP', [0])
     @mock_info = MockInfo.new([@a_rep], [@mock_office])
   end
