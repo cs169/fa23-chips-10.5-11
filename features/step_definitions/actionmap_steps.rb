@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'date'
 Given /the following representatives exist/ do |representatives_table|
   representatives_table.hashes.each do |rep|
     Representative.create!(name:      rep['name'],
@@ -37,6 +38,26 @@ Given /the following counties exist/ do |counties_table|
   end
 end
 
-Then /I navigate to the county map of (.*)/ do |county|
+Given /the following events exist/ do |events_table|
+  events_table.hashes.each do |event|
+    Event.create!(name:        event['name'],
+                  description: event['description'],
+                  county_id:   event['county_id'],
+                  start_time:  DateTime.now,
+                  end_time:    DateTime.now + Rational(1, 24),
+                  created_at:  Time.current,
+                  updated_at:  Time.current)
+  end
+end
+
+When /I filter events by state/ do
+  page.find(:xpath, ".//input[@value='Filter by State']").click
+end
+
+When /I filter events by county/ do
+  page.find(:xpath, ".//input[@value='county' and @type='radio']").click
+end
+
+When /I navigate to the county map of (.*)/ do |county|
   page.find(:xpath, ".//td[text()='#{county}']/../td/a[text()='View']").click
 end
