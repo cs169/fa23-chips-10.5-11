@@ -6,10 +6,11 @@ require 'rails_helper'
 require 'spec_helper'
 
 class MockOfficial
-  attr_accessor :name
+  attr_accessor :name, :address
 
-  def initialize(official_name)
+  def initialize(official_name, official_address = nil)
     @name = official_name
+    @address = official_address
   end
 end
 
