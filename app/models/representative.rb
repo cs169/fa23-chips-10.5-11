@@ -17,8 +17,18 @@ class Representative < ApplicationRecord
         end
       end
 
-      rep_hash = { name: official.name, ocdid: ocdid_temp,
-                   title: title_temp }
+      rep_hash = { 
+      name: official.name, 
+      ocdid: ocdid_temp,
+      title: title_temp,
+      address: official.address[0].line1,
+      city: official.address[0].city,
+      state: official.address[0].state,
+      zip: official.address[0].zip,
+      party: official.party,
+      photo_url: official.photo_url
+      }
+
       rep ||= Representative.find_by(rep_hash)
       rep ||= Representative.create!(rep_hash) unless rep
       reps.push(rep)
