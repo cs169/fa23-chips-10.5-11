@@ -37,6 +37,6 @@ Given /the following events exist/ do |events_table|
   end
 end
 
-Then /I navigate to the county map of (.*)/ do |county|
+When /I navigate to the county map of (.*)/ do |county|
   page.find(:xpath, ".//td[text()='#{county}']/../td/a[text()='View']").click
 end

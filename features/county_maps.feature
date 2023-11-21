@@ -18,7 +18,7 @@ Background: the database has some states
 Scenario: see the representatives of Alameda county
   When I am on the state map of CA
   Then I should see "Counties in California"
-  And Then I navigate to the county map of Alameda county
+  When I navigate to the county map of Alameda county
   Then I should see "Newsom"
   Then I should see "Pamela Price"
   Then I should see "Phong La"

@@ -20,8 +20,10 @@ Background: the database has some states, counties and events
   And Given the following events exist:
   | name           | description         | county_id |
   | Pride parade   | Celebrating pride   | 2         |
+  | BLM protest    | Racial justice      | 1         |
 
 Scenario: visiting the events page
   When I am on the events page
   Then I should see "Events"
   Then I should see "Pride parade"
+  Then I should see "BLM protest"
