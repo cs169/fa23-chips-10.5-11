@@ -83,4 +83,5 @@ describe Representative do
     result = described_class.civic_api_to_representative_params(@mock_info)
     expect(result[0].photo_url).to eq 'http://example.com/photo.jpg'
   end
+
 end
