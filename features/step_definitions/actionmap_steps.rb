@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'date'
+
 Given /the following states exist/ do |states_table|
   states_table.hashes.each do |state|
     State.create!(name:         state['name'],
@@ -20,6 +22,18 @@ Given /the following counties exist/ do |counties_table|
                    fips_class: country['fips_class'],
                    created_at: Time.current,
                    updated_at: Time.current)
+  end
+end
+
+Given /the following events exist/ do |events_table|
+  events_table.hashes.each do |event|
+    Event.create!(name:        event['name'],
+                  description: event['description'],
+                  county_id:   event['county_id'],
+                  start_time:  DateTime.now,
+                  end_time:    DateTime.now + Rational(1, 24),
+                  created_at:  Time.current,
+                  updated_at:  Time.current)
   end
 end
 
