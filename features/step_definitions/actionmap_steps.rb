@@ -41,6 +41,10 @@ When /I filter events by state/ do
   page.find(:xpath, ".//input[@value='Filter by State']").click
 end
 
+When /I filter events by county/ do
+  page.find(:xpath, ".//input[@value='county' and @type='radio']").click
+end
+
 When /I navigate to the county map of (.*)/ do |county|
   page.find(:xpath, ".//td[text()='#{county}']/../td/a[text()='View']").click
 end

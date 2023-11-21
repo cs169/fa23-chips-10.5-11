@@ -35,4 +35,5 @@ Scenario: looking for events in California:
   And I select "California" from "state"
   And I filter events by state
   Then I should see "Pride parade"
+  And I should see "BLM protest"
   And I should not see "School fundraiser"
