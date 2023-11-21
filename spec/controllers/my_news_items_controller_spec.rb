@@ -1,93 +1,93 @@
+# frozen_string_literal: true
 
 require 'rails_helper'
 
 RSpec.describe MyNewsItemsController, type: :controller do
-  let(:valid_attributes) {
+  let(:valid_attributes) do
     { news: 'News', title: 'Title', description: 'Description', link: 'Link', representative_id: 1 }
-  }
+  end
 
-  let(:invalid_attributes) {
+  let(:invalid_attributes) do
     { news: nil, title: nil, description: nil, link: nil, representative_id: nil }
-  }
+  end
 
-  describe "GET #new" do
-    it "returns a success response" do
+  describe 'GET #new' do
+    it 'returns a success response' do
       get :new
       expect(response).to be_successful
     end
   end
 
-  describe "POST #create" do
-    context "with valid params" do
-      it "creates a new NewsItem" do
-        expect {
-          post :create, params: {news_item: valid_attributes}
-        }.to change(NewsItem, :count).by(1)
+  describe 'POST #create' do
+    context 'with valid params' do
+      it 'creates a new NewsItem' do
+        expect do
+          post :create, params: { news_item: valid_attributes }
+        end.to change(NewsItem, :count).by(1)
       end
 
-      it "redirects to the created news_item" do
-        post :create, params: {news_item: valid_attributes}
+      it 'redirects to the created news_item' do
+        post :create, params: { news_item: valid_attributes }
         expect(response).to redirect_to(NewsItem.last)
       end
     end
 
-    context "with invalid params" do
-      it "does not create a new NewsItem" do
-        expect {
-          post :create, params: {news_item: invalid_attributes}
-        }.to change(NewsItem, :count).by(0)
+    context 'with invalid params' do
+      it 'does not create a new NewsItem' do
+        expect do
+          post :create, params: { news_item: invalid_attributes }
+        end.not_to change(NewsItem, :count)
       end
 
       it "returns a success response (i.e. to display the 'new' template)" do
-        post :create, params: {news_item: invalid_attributes}
+        post :create, params: { news_item: invalid_attributes }
         expect(response).to be_successful
       end
     end
   end
 
-  describe "PUT #update" do
-    context "with valid params" do
-      let(:new_attributes) {
-        { news: 'Updated News', title: 'Updated Title', description: 'Updated Description', link: 'Updated Link', representative_id: 1 }
-      }
+  describe 'PUT #update' do
+    context 'with valid params' do
+      let(:new_attributes) do
+        { news: 'Updated News', title: 'Updated Title', description: 'Updated Description', link: 'Updated Link',
+representative_id: 1 }
+      end
 
-      it "updates the requested news_item" do
+      it 'updates the requested news_item' do
         news_item = NewsItem.create! valid_attributes
-        put :update, params: {id: news_item.to_param, news_item: new_attributes}
+        put :update, params: { id: news_item.to_param, news_item: new_attributes }
         news_item.reload
         expect(news_item.news).to eq('Updated News')
       end
 
-      it "redirects to the news_item" do
+      it 'redirects to the news_item' do
         news_item = NewsItem.create! valid_attributes
-        put :update, params: {id: news_item.to_param, news_item: valid_attributes}
+        put :update, params: { id: news_item.to_param, news_item: valid_attributes }
         expect(response).to redirect_to(news_item)
       end
     end
 
-    context "with invalid params" do
+    context 'with invalid params' do
       it "returns a success response (i.e. to display the 'edit' template)" do
         news_item = NewsItem.create! valid_attributes
-        put :update, params: {id: news_item.to_param, news_item: invalid_attributes}
+        put :update, params: { id: news_item.to_param, news_item: invalid_attributes }
         expect(response).to be_successful
       end
     end
   end
 
-  describe "DELETE #destroy" do
-    it "destroys the requested news_item" do
+  describe 'DELETE #destroy' do
+    it 'destroys the requested news_item' do
       news_item = NewsItem.create! valid_attributes
-      expect {
-        delete :destroy, params: {id: news_item.to_param}
-      }.to change(NewsItem, :count).by(-1)
+      expect do
+        delete :destroy, params: { id: news_item.to_param }
+      end.to change(NewsItem, :count).by(-1)
     end
 
-    it "redirects to the news_items list" do
+    it 'redirects to the news_items list' do
       news_item = NewsItem.create! valid_attributes
-      delete :destroy, params: {id: news_item.to_param}
+      delete :destroy, params: { id: news_item.to_param }
       expect(response).to redirect_to(news_items_url)
     end
   end
 end
-
-
