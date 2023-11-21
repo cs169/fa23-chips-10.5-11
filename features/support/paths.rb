@@ -28,6 +28,9 @@ module NavigationHelpers
     when /^the state map of (.*)$/
       "/state/#{$1}"
 
+    when /^event (\d+)$/
+      "/my_events/#{$1}"
+
     else
       begin
         page_name =~ /^the (.*) page$/
