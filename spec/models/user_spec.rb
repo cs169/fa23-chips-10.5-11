@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# tests for the county model
+# tests for the user model
 
 require 'rails_helper'
 require 'spec_helper'
