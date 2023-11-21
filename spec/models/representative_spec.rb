@@ -6,11 +6,13 @@ require 'rails_helper'
 require 'spec_helper'
 
 class MockOfficial
-  attr_accessor :name, :address
+  attr_accessor :name, :address, :party, :photo_url
 
-  def initialize(official_name, official_address=nil)
+  def initialize(official_name, official_address=nil, official_party=nil, official_photo_url=nil)
     @name = official_name
     @address = official_address
+    @party = official_party
+    @photo_url = official_photo_url
   end
 end
 
@@ -46,7 +48,7 @@ end
 
 describe Representative do
   before do
-    @a_rep = MockOfficial.new('Tim Ryan', MockAddress.new('123 Main St', 'Anytown', 'CA', '12345'))
+    @a_rep = MockOfficial.new('Tim Ryan', MockAddress.new('123 Main St', 'Anytown', 'CA', '12345'), 'Democrat', 'http://example.com/photo.jpg')
     @mock_office = MockOffice.new('U.S. Representative', 'US_REP', [0])
     @mock_info = MockInfo.new([@a_rep], [@mock_office])
   end
