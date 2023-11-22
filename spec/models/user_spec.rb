@@ -5,18 +5,18 @@
 require 'rails_helper'
 require 'spec_helper'
 
-# FactoryBot.define do
-#   factory :user do
-#     add_attribute(:name) {"Ryan Kizior"}
-#     add_attribute(:provider) {'google_oauth2'}
-#     add_attribute(:uid) {1}
-#   end
-# end
+FactoryBot.define do
+  factory :user do
+    first_name { 'Ryan' }
+    last_name { 'Kizior' }
+    provider { 'google_oauth2' }
+    uid { 1 }
+  end
+end
 
 describe User do
   before do
-    # # create default user
-    # user = User.new
+    @user = build(:user)
 
     # add google user to table
     described_class.create!(first_name: 'Ryan',
@@ -57,5 +57,10 @@ describe User do
                               last_name:  'VonWinckelmann',
                               provider:   'github', uid: 2)
     end.to raise_error(ActiveRecord::RecordInvalid)
+  end
+
+  it 'finds the user based on the current user id' do
+    result = described_class.find(1)
+    expect(@user.first_name).to eq(result.first_name)
   end
 end

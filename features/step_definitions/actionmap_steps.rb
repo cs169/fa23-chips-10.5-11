@@ -1,6 +1,19 @@
 # frozen_string_literal: true
 
 require 'date'
+Given /the following representatives exist/ do |representatives_table|
+  representatives_table.hashes.each do |rep|
+    Representative.create!(name:      rep['name'],
+                           ocdid:     rep['ocdid'],
+                           title:     rep['title'],
+                           address:   rep['address'],
+                           city:      rep['city'],
+                           state:     rep['state'],
+                           zip:       rep['zip'],
+                           party:     rep['party'],
+                           photo_url: rep['photo_url'])
+  end
+end
 
 Given /the following states exist/ do |states_table|
   states_table.hashes.each do |state|

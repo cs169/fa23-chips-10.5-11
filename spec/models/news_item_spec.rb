@@ -5,18 +5,8 @@
 require 'rails_helper'
 require 'spec_helper'
 
-# FactoryBot.define do
-#   factory :news_item do
-#     add_attribute(:name) {"Ryan Kizior"}
-#     add_attribute(:provider) {'google_oauth2'}
-#     add_attribute(:uid) {1}
-#   end
-# end
-
 describe NewsItem do
   before do
-    # news_item = NewsItem.new
-
     Representative.create!(name:  'Ryan',
                            ocdid: 1,
                            title: 'rep 1 Ryan')
