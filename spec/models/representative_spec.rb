@@ -63,4 +63,24 @@ describe Representative do
     result2 = described_class.civic_api_to_representative_params(@mock_info)
     expect(result1).to eq(result2)
   end
+
+  it 'checks representative party' do
+    result = described_class.civic_api_to_representative_params(@mock_info)
+    expect(result[0].party).to eq 'Democrat'
+  end
+
+  it 'checks representative address' do
+    result = described_class.civic_api_to_representative_params(@mock_info)
+    expect(result[0].address).to eq '123 Main St'
+  end
+
+  it 'checks representative state' do
+    result = described_class.civic_api_to_representative_params(@mock_info)
+    expect(result[0].state).to eq 'CA'
+  end
+
+  it 'checks representative photo_url' do
+    result = described_class.civic_api_to_representative_params(@mock_info)
+    expect(result[0].photo_url).to eq 'http://example.com/photo.jpg'
+  end
 end
