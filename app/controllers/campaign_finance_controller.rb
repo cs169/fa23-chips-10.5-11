@@ -11,5 +11,6 @@ class CampaignFinanceController < ApplicationController
     category = params[:category].downcase.sub(' ', '-')
 
     @campaign_finance = CampaignFinance.get_top_twenty(cycle, category)
+    @category = category.sub('-', '_')
   end
 end

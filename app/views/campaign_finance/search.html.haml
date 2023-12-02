@@ -7,9 +7,9 @@
                     %thead.thead-dark
                         %tr
                             %th Name
-                            %th Office
-                            %th Links
+                            %th= @category
                     %tbody
                         - @campaign_finance.each_with_index do |camp, _index|
                             %tr
                                 %td= camp['name']
+                                %td= camp["#{@category}"]
