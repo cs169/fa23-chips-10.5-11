@@ -32,6 +32,6 @@
         .col-sm-2
             = f.label :issue, class: 'col-form-label'
         .col-sm-10
-            = f.select :issue, @issues_list, { include_blank: true }, class: 'form-control'
+            = f.select :issue, issues_list, { include_blank: true }, class: 'form-control'
     .actions
         = f.submit 'Save', class: 'btn btn-primary'
