@@ -69,16 +69,4 @@ ActiveRecord::Schema.define(version: 2023_11_21_051200) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-
-  create_table "users", force: :cascade do |t|
-    t.integer "provider", null: false
-    t.string "uid", null: false
-    t.string "email"
-    t.string "first_name"
-    t.string "last_name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["uid", "provider"], name: "index_users_on_uid_provider", unique: true
-  end
-
 end
