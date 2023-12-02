@@ -10,16 +10,18 @@ RSpec.describe MyNewsItemsController, type: :controller do
     { title: nil, link: nil, representative_id: nil }
   }
 
+  let(:valid_session) { {} }
+
   describe "POST #create" do
     context "with valid params" do
       it "creates a new NewsItem" do
         expect {
-          post :create, params: { news_item: valid_attributes }
+          post :create, params: { representative_id: 1, news_item: valid_attributes }, session: valid_session
         }.to change(NewsItem, :count).by(1)
       end
 
       it "redirects to the created news_item" do
-        post :create, params: { news_item: valid_attributes }
+        post :create, params: { representative_id: 1, news_item: valid_attributes }, session: valid_session
         expect(response).to redirect_to(NewsItem.last)
       end
     end
@@ -27,12 +29,12 @@ RSpec.describe MyNewsItemsController, type: :controller do
     context "with invalid params" do
       it "does not create a new NewsItem" do
         expect {
-          post :create, params: { news_item: invalid_attributes }
+          post :create, params: { representative_id: 1, news_item: invalid_attributes }, session: valid_session
         }.to change(NewsItem, :count).by(0)
       end
 
       it "re-renders the 'new' template" do
-        post :create, params: { news_item: invalid_attributes }
+        post :create, params: { representative_id: 1, news_item: invalid_attributes }, session: valid_session
         expect(response).to render_template("new")
       end
     end
