@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe AjaxController, type: :controller do
   describe 'GET #counties' do
-    let(:state) { State.create(name: 'Test State', symbol: 'TS') }
+    let(:state) { State.create(name: 'Test State', symbol: 'TS', fips_code: '00') }
 
     before do
       get :counties, params: { state_symbol: state.symbol }
