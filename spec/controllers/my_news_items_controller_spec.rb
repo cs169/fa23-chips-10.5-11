@@ -22,6 +22,7 @@ RSpec.describe MyNewsItemsController, type: :controller do
 
       it 'redirects to the created news_item' do
         post :create, params: { news_item: valid_attributes }
+
         expect(response).to redirect_to(NewsItem.last)
       end
     end
