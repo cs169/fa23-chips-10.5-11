@@ -29,7 +29,7 @@ module ApplicationHelper
       },
       {
         title: 'Campaign Finances',
-        link: '/campaign_finance'
+        link:  '/campaign_finance'
       }
     ]
   end
