@@ -82,4 +82,19 @@ ActiveRecord::Schema.define(version: 2023_12_02_054945) do
     t.index ["uid", "provider"], name: "index_users_on_uid_provider", unique: true
   end
 
+  # added the following
+  # create_table "campaign_finance", force: :cascade do |t|
+  #   t.string "name", null: false
+  #   t.integer "total_from_individuals"
+  #   t.integer "total_from_pacs"
+  #   t.integer "total_contributions"
+  #   t.integer "candidate_loans"
+  #   t.integer "total_disbursements"
+  #   t.integer "begin_cash"
+  #   t.integer "end_cash"
+  #   t.integer "total_refunds"
+  #   t.integer "debts_owed"
+  # end
+  # end add
+
 end
