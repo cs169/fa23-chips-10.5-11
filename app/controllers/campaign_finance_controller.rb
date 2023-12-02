@@ -4,8 +4,6 @@ class CampaignFinanceController < ApplicationController
   def index; end
 
   def search
-    unless (params[:category] and params[:cycle])
-      redirect_to '/campaign_finance'
-    end
+    redirect_to '/campaign_finance' unless params[:category] && params[:cycle]
   end
 end
