@@ -2,10 +2,10 @@
 
 class CampaignFinanceController < ApplicationController
   def index
-    p "Hello, world!"
+    Rails.logger.debug 'Hello, world!'
   end
 
   def search
-    p "Hello, world!"
+    Rails.logger.debug 'Hello, world!'
   end
 end
