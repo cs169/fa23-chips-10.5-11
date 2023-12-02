@@ -1,42 +1,41 @@
-# frozen_string_literal: true
-
 # spec/controllers/my_news_items_controller_spec.rb
 require 'rails_helper'
 
 RSpec.describe MyNewsItemsController, type: :controller do
-  let(:valid_attributes) do
+  let(:valid_attributes) {
     { title: 'Test Title', link: 'http://test.com', representative_id: 1 }
-  end
+  }
 
-  let(:invalid_attributes) do
+  let(:invalid_attributes) {
     { title: nil, link: nil, representative_id: nil }
-  end
+  }
 
-  describe 'POST #create' do
-    context 'with valid params' do
-      it 'creates a new NewsItem' do
-        expect do
-          post :create, params: { news_item: valid_attributes }
-        end.to change(NewsItem, :count).by(1)
+  let(:valid_session) { {} }
+
+  describe "POST #create" do
+    context "with valid params" do
+      it "creates a new NewsItem" do
+        expect {
+          post :create, params: { representative_id: 1, news_item: valid_attributes }, session: valid_session
+        }.to change(NewsItem, :count).by(1)
       end
 
-      it 'redirects to the created news_item' do
-        post :create, params: { news_item: valid_attributes }
-
+      it "redirects to the created news_item" do
+        post :create, params: { representative_id: 1, news_item: valid_attributes }, session: valid_session
         expect(response).to redirect_to(NewsItem.last)
       end
     end
 
-    context 'with invalid params' do
-      it 'does not create a new NewsItem' do
-        expect do
-          post :create, params: { news_item: invalid_attributes }
-        end.not_to change(NewsItem, :count)
+    context "with invalid params" do
+      it "does not create a new NewsItem" do
+        expect {
+          post :create, params: { representative_id: 1, news_item: invalid_attributes }, session: valid_session
+        }.to change(NewsItem, :count).by(0)
       end
 
       it "re-renders the 'new' template" do
-        post :create, params: { news_item: invalid_attributes }
-        expect(response).to render_template('new')
+        post :create, params: { representative_id: 1, news_item: invalid_attributes }, session: valid_session
+        expect(response).to render_template("new")
       end
     end
   end
