@@ -10,11 +10,6 @@
                             %th Office
                             %th Links
                     %tbody
-                        - @representatives.each_with_index do |rep, _index|
+                        - @campaign_finance.each_with_index do |camp, _index|
                             %tr
-                                %td= link_to rep.name, representative_path(rep)
-                                %td= rep.title
-                                %td
-                                    = link_to representative_news_items_path(rep.id), class: 'btn btn-primary' do
-                                        %i.fas.fa-newspaper
-                                        News Articles
+                                %td= camp['name']
