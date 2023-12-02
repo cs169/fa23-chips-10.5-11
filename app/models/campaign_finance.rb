@@ -15,6 +15,6 @@ class CampaignFinance < ApplicationRecord
       faraday.headers['X-API-Key'] = api_key
     end
 
-    connection.get url
+    JSON.parse(connection.get(url).body)['results']
   end
 end
